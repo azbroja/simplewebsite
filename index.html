@@ -17,7 +17,9 @@
 <script>
     $('input').on('beforeItemAdd', function(event) {
         const value = event.item;
-        const text = new RegExp('0U[0-9][0-9]$', 'i');
-        event.cancel = /^0U\d{2}$/i.test(text);
+        const text = new RegExp('^0U[0-9][0-9]$', 'i');
+        if (!text.test(value)) {
+            event.cancel = true;
+        }
 });
 </script>
